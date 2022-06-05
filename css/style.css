@@ -1,0 +1,271 @@
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0; }
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+:focus, :active {
+  outline: none; }
+
+a:focus, a:active {
+  outline: none; }
+
+nav, footer, header, aside {
+  display: block; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+input, button, textarea {
+  font-family: inherit; }
+
+input::-ms-clear {
+  display: none; }
+
+button {
+  cursor: pointer; }
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+a, a:visited {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+ul li {
+  list-style: none; }
+
+img {
+  vertical-align: top; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit; }
+/*----------------------------------*/
+
+*{
+	font-family: 'Roboto', sans-serif;
+}
+body{
+	max-width: 1500px;
+	margin: 0px auto;
+	padding: 30px;
+}
+
+/* Шапка */
+header{
+	padding: 0px 30px 30px 0px;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #f2f2f2;
+	align-items: center;
+}
+h1{
+	font-weight: 500;
+	font-size: 30px;
+	margin-left: 14px;
+}
+.logo h1{
+	float: right;
+}
+
+.balance{
+	font-size: 20px;
+}
+
+/*Настройки поиска книг*/
+main{
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 50px;
+}
+.books{
+	width: 70%;
+	font-size: 16px;
+	max-width: 1000px;
+}
+.books__head{
+	position: relative;
+	padding: 60px 15px 0px 0px; 
+}
+.sort{
+	display: inline-block;
+	margin-right: 30px;
+	cursor: pointer;
+}
+.sort:hover{
+	/*color:#0c7c6a;*/
+	color:#bb5500;
+}
+
+.search_input{
+	width: 500px;
+}
+.daw{
+	padding-top: 4px;
+}
+.search{
+	display: flex;
+	margin-top: 35px;
+	border-bottom: 1px solid #f2f2f2;
+}
+.search{
+	padding-bottom: 10px;
+}
+.loop{
+	margin-right: 10px;
+}
+
+.category{
+	cursor: pointer;
+	display: inline-block;
+	height: 25px;
+}
+
+.category__block{
+	opacity: 0;
+	width: 176px;
+	padding: 0px 10px 10px 10px;
+	font-size: 12px;
+	border: 1px solid #CCCCCC;
+	border-radius: 8px;
+	position: absolute;
+	top: -999999em;
+   left: 210px;
+	background-color: #fff;
+
+}
+.category__block li{
+	border-bottom: 1px solid #CCCCCC4D;
+	line-height: 14.52px;
+	padding: 10px 0px 7px 0px;
+}
+.category:hover .daw{
+	transform: rotate(180deg) translateY(-3px);
+	
+}
+.category:hover .category__block{
+	opacity: 1;
+	top: 82px;
+}
+.category__block li:hover{
+	color:#bb5500;
+}
+
+
+/*Каталог книг*/
+.no_books{
+	font-size: 32px;
+	color: rgba(0, 0, 0, 0.29);
+	text-align: center;
+	width: 100%;
+	align-self: center;
+	padding-top: 25%;
+}
+
+.books_body{
+	display: flex;
+	padding-top: 30px;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.book{
+	width: 385px;
+	display: flex;
+	flex-wrap: nowrap;
+	height: 110px;
+	margin-bottom: 23px;
+}
+.book:nth-child(odd){
+	margin-right: 20px;
+}
+.cover{
+	width: 85px;
+	height: 110px;
+	background-color: #c4c4c4;
+	margin-right: 10px;
+}
+.info{
+	width: 290px;
+	height: 110px;
+	float: right;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.info button{
+	padding: 12px 28px;
+	background-color: #c4c4c4;
+	border-radius: 7px;
+	font-size: 16px;
+}
+
+.info button:hover{
+	background-color: #ffbb66;
+}
+.price_Buy{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.price span{
+	font-size: 25px;
+}
+
+
+
+/* Корзина */
+.basket{
+	padding-left: 15px;
+	width: 30%;
+}
+
+h2{
+	font-size: 35px;
+	float: left;
+}
+
+.basket__head img{
+	padding-top: 5px;
+	padding-left: 15px;
+}
+.basket__head{
+	padding: 60px 0px 50px 0px; 
+	display: flex;
+	flex-wrap: nowrap;
+}
+.basket__body{
+	height: 72vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.basket__text{
+	color: #00000099;
+}
+
+/*Анимация найденного элемента*/
+
+@keyframes yellowBg{
+	0%{
+		background: rgb(252 236 94 / 74%);
+	}
+	100%{
+		background: rgb(252 236 94 / 74%);
+	}
+}
