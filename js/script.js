@@ -249,26 +249,24 @@ booksBody.addEventListener('click', function (e) {
 	}
 	let takenBook = document.createElement('div');
 	takenBook.classList.add('takenBook');
+	pieceBlock = document.createElement('div'); //создаем блок штуки
+	pieceBlock.classList.add('pieces_block');
+	pieceBlock.insertAdjacentHTML(
+		'afterbegin',
+		`<span class="piece">1</span> шт`
+	)
+
 	buttons.forEach((button) => {
-
 		if (button == e.target) {
-
 			info = button.closest('.info');
 			title = info.firstElementChild; //название книги
 			titleBook = title.cloneNode(true); //название книги клон
 			price = button.previousElementSibling; //цена книги
 			priceBook = price.cloneNode(true); //цена книги клон
 
-			takenBook.prepend(titleBook, priceBook);
+			takenBook.prepend(titleBook, pieceBlock, priceBook); //в takenbook добавляем заголовок, 1 шт и цену
 			console.log(takenBook);
 			basketBody.append(takenBook);
 		}
 	});
 });
-
-
-
-
-
-
-
