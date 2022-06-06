@@ -252,11 +252,20 @@ h2{
 .basket__body{
 	height: 72vh;
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: column;
 }
 .basket__text{
 	color: #00000099;
+	text-align: center;
+}
+.takenBook{
+	border-bottom: 1px solid #00000040;
+	padding: 15px 0px 5px 0px;
+}
+.takenBook .book_title{
+margin-bottom: 3px;
 }
 
 /*Анимация найденного элемента*/
