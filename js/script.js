@@ -240,10 +240,10 @@ test.addEventListener('click', function () {
 let buttons = document.querySelectorAll('button');
 let basketText = document.querySelector('.basket__text');
 let basketBody = document.querySelector('.basket__body');
-
-
+let info, title, titleBook, price, priceBook;
 
 booksBody.addEventListener('click', function (e) {
+	basketBody.style.justifyContent = 'start';
 	if (document.querySelector('.basket__text')) {
 		basketText.remove();
 	}
@@ -253,21 +253,19 @@ booksBody.addEventListener('click', function (e) {
 
 		if (button == e.target) {
 
-			let info = button.closest('.info');
-			let title = info.firstElementChild; //название книги
-			let titleBook = title.cloneNode(true); //название книги клон
-			let price = button.previousElementSibling; //цена книги
-			let priceBook = price.cloneNode(true); //цена книги клон
+			info = button.closest('.info');
+			title = info.firstElementChild; //название книги
+			titleBook = title.cloneNode(true); //название книги клон
+			price = button.previousElementSibling; //цена книги
+			priceBook = price.cloneNode(true); //цена книги клон
 
 			takenBook.prepend(titleBook, priceBook);
 			console.log(takenBook);
 			basketBody.append(takenBook);
 		}
-
-
 	});
-
 });
+
 
 
 
