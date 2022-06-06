@@ -240,15 +240,15 @@ test.addEventListener('click', function () {
 let buttons = document.querySelectorAll('button');
 let basketText = document.querySelector('.basket__text');
 let basketBody = document.querySelector('.basket__body');
-let takenBook = document.createElement('div');
-takenBook.classList.add('takenBook');
+
 
 
 booksBody.addEventListener('click', function (e) {
 	if (document.querySelector('.basket__text')) {
 		basketText.remove();
 	}
-
+	let takenBook = document.createElement('div');
+	takenBook.classList.add('takenBook');
 	buttons.forEach((button) => {
 
 		if (button == e.target) {
@@ -261,12 +261,14 @@ booksBody.addEventListener('click', function (e) {
 
 			takenBook.prepend(titleBook, priceBook);
 			console.log(takenBook);
+			basketBody.append(takenBook);
 		}
-		basketBody.append(takenBook);
+
 
 	});
 
 });
+
 
 
 
