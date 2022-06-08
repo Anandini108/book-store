@@ -240,13 +240,12 @@ test.addEventListener('click', function () {
 let buttons = document.querySelectorAll('button');
 let basketText = document.querySelector('.basket__text');
 let basketBody = document.querySelector('.basket__body');
-let info, title, titleBook, price, priceBook;
+let info, title, titleBook, price, priceBook, close;
+let basketFooter = document.querySelector('.basket__footer');
+
 
 booksBody.addEventListener('click', function (e) {
-	basketBody.style.justifyContent = 'start';
-	if (document.querySelector('.basket__text')) {
-		basketText.remove();
-	}
+
 	let takenBook = document.createElement('div');
 	takenBook.classList.add('takenBook');
 	pieceBlock = document.createElement('div'); //создаем блок штуки
@@ -255,17 +254,36 @@ booksBody.addEventListener('click', function (e) {
 		'afterbegin',
 		`<span class="piece">1</span> шт`
 	)
+	close = document.createElement('img'); //созадем крестик
+	close.classList.add('close');
+	close.src = 'img/close.svg';
+
 	buttons.forEach((button) => {
+
 		if (button == e.target) {
+			if (document.querySelector('.basket__text')) {
+				basketText.remove(); //удаляем надпись "Нет книг"
+			}
+			basketBody.style.justifyContent = 'start';
+			basketFooter.style.display = 'block'; //показываем футер у корзины
+
 			info = button.closest('.info');
 			title = info.firstElementChild; //название книги
 			titleBook = title.cloneNode(true); //название книги клон
 			price = button.previousElementSibling; //цена книги
 			priceBook = price.cloneNode(true); //цена книги клон
-			takenBook.prepend(titleBook, pieceBlock, priceBook); //в takenbook добавляем заголовок, 1 шт и цену
+
+			takenBook.prepend(titleBook, pieceBlock, priceBook, close); //в takenbook добавляем заголовок, 1 шт и цену и крестик
 			console.log(takenBook);
 			basketBody.append(takenBook);
+
+			close.addEventListener('click', function () {
+				console.log('yes');
+				takenBook.remove();
+			})
 		}
 	});
 });
+
+
 
