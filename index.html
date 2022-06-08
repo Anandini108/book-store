@@ -3,7 +3,6 @@
 
 <head>
 	<meta charset="UTF-8">
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Магазин книг</title>
 	<link rel="stylesheet" href="css/style.css">
@@ -12,193 +11,194 @@
 </head>
 
 <body>
-	<header>
-		<div class="logo">
-			<img src="img/book.png" alt="">
-			<h1>Магазин книг</h1>
-		</div>
-		<div class="balance">
-			Баланс: 10200 руб.
-		</div>
-	</header>
-	<main>
-		<div class="books">
-
-			<div class="books__head">
-				<span class="sort">Сортировать по цене ↑↓</span>
-				<div class="category">
-					<span class="text__category">Категория</span>
-					<img src="img/daw.svg" class="daw" alt="">
-					<ul class="category__block">
-						<li class="design">Дизайн</li>
-						<li class="management">Управление проектами</li>
-						<li class="development">Разработка</li>
-						<li class="test">Тестирование</li>
-					</ul>
+	<div class="wrapper">
+		<header>
+			<div class="logo">
+				<img src="img/book.png" alt="">
+				<h1>Магазин книг</h1>
+			</div>
+			<div class="balance">
+				Баланс: 10200 руб.
+			</div>
+		</header>
+		<main>
+			<div class="books">
+				<div class="books__head">
+					<span class="sort">Сортировать по цене ↑↓</span>
+					<div class="category">
+						<span class="text__category">Категория</span>
+						<img src="img/daw.svg" class="daw" alt="">
+						<ul class="category__block">
+							<li class="design">Дизайн</li>
+							<li class="management">Управление проектами</li>
+							<li class="development">Разработка</li>
+							<li class="test">Тестирование</li>
+						</ul>
+					</div>
+					<form class="search" action="#">
+						<img src="img/loop.png" class="loop" alt="">
+						<input type="text" class="search_input" placeholder="Введите название книги">
+					</form>
 				</div>
-				<form class="search" action="#">
-					<img src="img/loop.png" class="loop" alt="">
-					<input type="text" class="search_input" placeholder="Введите название книги">
-				</form>
+
+				<div class="books_body">
+					<div class="book" data-categoryId="3">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Совершенный код. Мастер класс</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">150 </span>руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="3">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Искусство программирования, Д.Кнут</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">210 </span>руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="1">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Дизайн - это работа</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">320 </span>руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="2">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">45 татуировок менеджера</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">250 </span>руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="3">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Совершенный код. Мастер класс</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">510 </span>руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="1">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Отзывчивый веб-дизайн</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">700</span> руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="2">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Scrum. Революционный метод управления проектами</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">1020</span> руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="3">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Совершенный код. Мастер класс</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">940</span> руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="2">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Deedline. Роман об управлении проектами</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">1000</span> руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="3">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Не заставляйте меня думать</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">870</span> руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="4">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Искусство тестирования программ</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">400</span> руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="1">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Эмоциональный веб-дизайн</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">540</span> руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="3">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Совершенный код. Мастер класс</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">350</span> руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+					<div class="book" data-categoryId="4">
+						<div class="cover"></div>
+						<div class="info">
+							<div class="book_title">Искусство тестирования программ</div>
+							<div class="price_Buy">
+								<div class="price"><span class="price_value">380</span> руб.</div>
+								<button>В корзину</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div class="books_body">
-				<div class="book" data-categoryId="3">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Совершенный код. Мастер класс</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">150 </span>руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
+			<div class="basket">
+				<div class="basket__head">
+					<h2>Корзина</h2>
+					<img src="img/basket.svg" alt="">
 				</div>
-				<div class="book" data-categoryId="3">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Искусство программирования, Д.Кнут</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">210 </span>руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="1">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Дизайн - это работа</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">320 </span>руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="2">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">45 татуировок менеджера</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">250 </span>руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="3">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Совершенный код. Мастер класс</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">510 </span>руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="1">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Отзывчивый веб-дизайн</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">700</span> руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="2">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Scrum. Революционный метод управления проектами</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">1020</span> руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="3">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Совершенный код. Мастер класс</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">940</span> руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="2">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Deedline. Роман об управлении проектами</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">1000</span> руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="3">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Не заставляйте меня думать</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">870</span> руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="4">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Искусство тестирования программ</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">400</span> руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="1">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Эмоциональный веб-дизайн</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">540</span> руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="3">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Совершенный код. Мастер класс</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">350</span> руб.</div>
-							<button>В корзину</button>
-						</div>
-					</div>
-				</div>
-				<div class="book" data-categoryId="4">
-					<div class="cover"></div>
-					<div class="info">
-						<div class="book_title">Искусство тестирования программ</div>
-						<div class="price_Buy">
-							<div class="price"><span class="price_value">380</span> руб.</div>
-							<button>В корзину</button>
-						</div>
+				<div class="basket__body">
+					<div class="basket__text">
+						Нет добавленных книг
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="basket">
-			<div class="basket__head">
-				<h2>Корзина</h2>
-				<img src="img/basket.svg" alt="">
-			</div>
-			<div class="basket__body">
-				<div class="basket__text">
-					Нет добавленных книг
-				</div>
-			</div>
-		</div>
-
-	</main>
+		</main>
+	</div>
 	<script src="js/script.js"></script>
 </body>
 
