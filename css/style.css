@@ -271,6 +271,7 @@ h2{
 .takenBook{
 	border-bottom: 1px solid #00000040;
 	padding: 15px 0px 5px 0px;
+	position: relative;
 }
 .takenBook .book_title{
 margin-bottom: 3px;
@@ -280,6 +281,35 @@ margin-bottom: 3px;
 }
 .basket__head img {
 	width: 43px;
+}
+.close{
+	position: absolute;
+	top: calc(50% - 4.5px);;
+	right: 24px;
+	padding: 5px;
+}
+
+
+.basket__footer{
+	text-align: center;
+	display: none;
+}
+.summa{
+	font-size: 20px;
+	 margin: 15px 0px;
+}
+.sum_num{
+	font-size: 32px;
+}
+.btn_buy{
+	display: inline-block;
+	font-size: 24px;
+	padding: 6px 60px;
+	background-color: #C4C4C4;
+	border-radius: 8px;
+}
+.btn_buy:hover{
+	background-color: gold;
 }
 
 /*Анимация найденного элемента*/
@@ -346,6 +376,7 @@ margin-bottom: 3px;
 	.book:nth-child(odd) {
 		margin-right: 0px;
   }
+  
 	
 }
 
@@ -367,5 +398,31 @@ margin-bottom: 3px;
   .category:hover .category__block {
 		top: 122px;
 	}
-
 }
+
+@media (max-width: 850px) {
+	.btn_buy{
+		font-size: 22px;
+		padding: 6px 20px;
+	}
+}
+@media (max-width: 1000px) {
+	.close {
+		right: 0;
+	}
+}
+@media (max-width: 550px) {
+	.btn_buy {
+		font-size: 24px;
+		padding: 6px 40px;
+	}
+	.close {
+		right: 24px;
+	}
+}
+@media (max-width: 400px) {
+	.close {
+		right: 0;
+	}
+}
+
