@@ -64,7 +64,11 @@ h1, h2, h3, h4, h5, h6 {
 body{
 	max-width: 1500px;
 	margin: 0px auto;
+	overflow-x: hidden;
+}
+.wrapper{
 	padding: 30px;
+	min-height: 100%;
 }
 
 /* Шапка */
@@ -308,6 +312,9 @@ margin-bottom: 3px;
 	.book{
 		width: 315px;
 	}
+	.category__block{
+		width: 154px;
+	}
 }
 
 @media (max-width: 550px) {
@@ -340,4 +347,25 @@ margin-bottom: 3px;
 		margin-right: 0px;
   }
 	
+}
+
+@media (max-width: 400px) {
+	.category__block{
+		width: 100px;
+	}
+
+}
+
+@media (max-width: 380px) {
+	.category__block{
+		width: 160px;
+		left: 0;
+	}
+	.category {
+		margin-top: 20px;
+  }
+  .category:hover .category__block {
+		top: 122px;
+	}
+
 }
