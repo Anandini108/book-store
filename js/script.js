@@ -320,6 +320,8 @@ booksBody.addEventListener('click', function (e) {
 						sumNum = 0;
 						document.querySelector('.sum_num').innerHTML = `${sumNum}`;
 						basketFooter.style.display = 'none';
+						basketText.style.display = 'block';
+						basketBody.style.justifyContent = 'center';
 					}
 					else {
 
