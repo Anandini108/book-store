@@ -273,7 +273,6 @@ booksBody.addEventListener('click', function (e) {
 			price = button.previousElementSibling; //цена книги
 			priceBook = price.cloneNode(true); //цена книги клон
 			takenBook.prepend(titleBook, pieceBlock, priceBook, close); //в takenbook добавляем заголовок, 1 шт и цену и крестик
-			console.log(takenBook);
 			basketBody.append(takenBook); //вставляем книгу в корзину
 
 			//общая стоимость книг
@@ -301,6 +300,31 @@ booksBody.addEventListener('click', function (e) {
 					sumNum = 0;
 				}
 			})
+
+			//Купить
+			if (document.querySelector('.btn_buy')) {
+				let btnBuy = document.querySelector('.btn_buy');
+				let balanceSpan = document.querySelector('.balance__num');
+				let titleBooks = document.querySelectorAll('.takenBook');
+
+				btnBuy.addEventListener('click', function () {
+					sumNum = Number(document.querySelector('.sum_num').textContent); //последняя стоимость
+					let balance = Number(document.querySelector('.balance__num').textContent); //последний баланс
+					if (balance >= sumNum) {
+						balance = balance - sumNum;
+						let balanceText = String(balance);
+						balanceSpan.innerHTML = `${balanceText}`;
+						titleBooks.forEach(titleBook => {
+							titleBook.remove();
+						})
+						sumNum = 0;
+						document.querySelector('.sum_num').innerHTML = `${sumNum}`;
+					}
+					else {
+
+					}
+				})
+			}
 		}
 	});
 });
