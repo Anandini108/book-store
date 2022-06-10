@@ -309,8 +309,7 @@ booksBody.addEventListener('click', function (e) {
 
 				btnBuy.addEventListener('click', function () {
 					sumNum = Number(document.querySelector('.sum_num').textContent); //последняя стоимость
-					let balanceSpan = document.querySelector('.balance__num');
-					let balance = Number(balanceSpan.textContent); //последний баланс
+					let balance = Number(document.querySelector('.balance__num').textContent); //последний баланс
 					if (balance >= sumNum) {
 						balance = balance - sumNum;
 						let balanceText = String(balance);
@@ -331,3 +330,11 @@ booksBody.addEventListener('click', function (e) {
 		}
 	});
 });
+
+
+
+
+
+
+
+
