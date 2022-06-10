@@ -240,9 +240,9 @@ test.addEventListener('click', function () {
 let buttons = document.querySelectorAll('button');
 let basketText = document.querySelector('.basket__text');
 let basketBody = document.querySelector('.basket__body');
-let info, title, titleBook, price, priceBook, close;
+let info, title, titleBook, price, priceBook, close, priceNum;
 let basketFooter = document.querySelector('.basket__footer');
-
+let sumNum = Number(document.querySelector('.sum_num').textContent); //число суммы
 
 booksBody.addEventListener('click', function (e) {
 
@@ -262,7 +262,7 @@ booksBody.addEventListener('click', function (e) {
 
 		if (button == e.target) {
 			if (document.querySelector('.basket__text')) {
-				basketText.remove(); //удаляем надпись "Нет книг"
+				basketText.style.display = 'none'; //скрываем надпись "Нет книг"
 			}
 			basketBody.style.justifyContent = 'start';
 			basketFooter.style.display = 'block'; //показываем футер у корзины
@@ -272,18 +272,35 @@ booksBody.addEventListener('click', function (e) {
 			titleBook = title.cloneNode(true); //название книги клон
 			price = button.previousElementSibling; //цена книги
 			priceBook = price.cloneNode(true); //цена книги клон
-
 			takenBook.prepend(titleBook, pieceBlock, priceBook, close); //в takenbook добавляем заголовок, 1 шт и цену и крестик
 			console.log(takenBook);
-			basketBody.append(takenBook);
+			basketBody.append(takenBook); //вставляем книгу в корзину
 
-			close.addEventListener('click', function () {
-				console.log('yes');
+			//общая стоимость книг
+			let priceNum = Number(price.firstElementChild.textContent); //цена книги (число)
+			sumNum = sumNum + priceNum; //итоговая стоимость
+			let sumNumText = String(sumNum);
+			document.querySelector('.sum_num').innerHTML = `${sumNumText}`;
+
+			//клик на крестик книги
+			close.addEventListener('click', function (e) {
+				//уменьшаем итоговую стоимость
+				let cross = e.target; //считываем крестик, на которого нажали
+				let divPrice = cross.previousElementSibling; // блок divPrice, связанный с нажатым кретиком
+				let priceNumClose = Number(divPrice.firstElementChild.textContent); //цена удаляющей книги 
+				sumNum = sumNum - priceNumClose; //уменьшаем итоговую стоимость
+				let sumNumTextClose = String(sumNum);
+				document.querySelector('.sum_num').innerHTML = `${sumNumTextClose}`; //выводим итоговую стоимость после вычита
+
+				//удаляем книгу
 				takenBook.remove();
+				if (!document.querySelector('.takenBook')) {
+					basketText.style.display = 'block'; //показываем надпись "Нет книг"
+					basketBody.style.justifyContent = 'center';
+					basketFooter.style.display = 'none';
+					sumNum = 0;
+				}
 			})
 		}
 	});
 });
-
-
-
