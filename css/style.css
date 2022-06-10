@@ -307,10 +307,12 @@ margin-bottom: 3px;
 	padding: 6px 60px;
 	background-color: #C4C4C4;
 	border-radius: 8px;
+	cursor: pointer;
 }
 .btn_buy:hover{
 	background-color: gold;
 }
+
 
 /*Анимация найденного элемента*/
 
@@ -425,4 +427,7 @@ margin-bottom: 3px;
 		right: 0;
 	}
 }
+
+
+
 
