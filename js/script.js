@@ -319,6 +319,7 @@ booksBody.addEventListener('click', function (e) {
 						})
 						sumNum = 0;
 						document.querySelector('.sum_num').innerHTML = `${sumNum}`;
+						basketFooter.style.display = 'none';
 					}
 					else {
 
