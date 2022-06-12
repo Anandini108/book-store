@@ -243,12 +243,12 @@ let basketBody = document.querySelector('.basket__body');
 let info, title, titleBook, price, priceBook, close, priceNum;
 let basketFooter = document.querySelector('.basket__footer');
 let sumNum = Number(document.querySelector('.sum_num').textContent); //число суммы
+let takenBooks;
 
 booksBody.addEventListener('click', function (e) {
-
-	let takenBook = document.createElement('div');
+	let takenBook = document.createElement('div'); //создаем пустой блок книга
 	takenBook.classList.add('takenBook');
-	pieceBlock = document.createElement('div'); //создаем блок штуки
+	pieceBlock = document.createElement('div'); //создаем пустой блок штуки
 	pieceBlock.classList.add('pieces_block');
 	pieceBlock.insertAdjacentHTML(
 		'afterbegin',
@@ -258,9 +258,8 @@ booksBody.addEventListener('click', function (e) {
 	close.classList.add('close');
 	close.src = 'img/close.svg';
 
-	buttons.forEach((button) => {
-
-		if (button == e.target) {
+	buttons.forEach((button) => { //для каждой кнопки
+		if (button == e.target) { //отслеживаем кликнутую кнопку
 			if (document.querySelector('.basket__text')) {
 				basketText.style.display = 'none'; //скрываем надпись "Нет книг"
 			}
@@ -274,6 +273,8 @@ booksBody.addEventListener('click', function (e) {
 			priceBook = price.cloneNode(true); //цена книги клон
 			takenBook.prepend(titleBook, pieceBlock, priceBook, close); //в takenbook добавляем заголовок, 1 шт и цену и крестик
 			basketBody.append(takenBook); //вставляем книгу в корзину
+
+			takenBooks = document.querySelectorAll('.takenBook'); //все книги в корзине
 
 			//общая стоимость книг
 			let priceNum = Number(price.firstElementChild.textContent); //цена книги (число)
@@ -300,43 +301,34 @@ booksBody.addEventListener('click', function (e) {
 					sumNum = 0;
 				}
 			})
-
-			//Купить
-			if (document.querySelector('.btn_buy')) {
-				let btnBuy = document.querySelector('.btn_buy');
-				let balanceSpan = document.querySelector('.balance__num');
-				let titleBooks = document.querySelectorAll('.takenBook');
-
-				btnBuy.addEventListener('click', function () {
-					sumNum = Number(document.querySelector('.sum_num').textContent); //последняя стоимость
-					let balance = Number(document.querySelector('.balance__num').textContent); //последний баланс
-					if (balance >= sumNum) {
-						balance = balance - sumNum;
-						let balanceText = String(balance);
-						balanceSpan.innerHTML = `${balanceText}`;
-						titleBooks.forEach(titleBook => {
-							titleBook.remove();
-						})
-						sumNum = 0;
-						document.querySelector('.sum_num').innerHTML = `${sumNum}`;
-						basketFooter.style.display = 'none';
-						basketText.style.display = 'block';
-						basketBody.style.justifyContent = 'center';
-					}
-					else {
-
-					}
-
-				})
-			}
 		}
 	});
 });
 
+//Купить
+if (document.querySelector('.btn_buy')) { //если существует кнопка купить
+	let btnBuy = document.querySelector('.btn_buy'); //находим кнопку купить
+	let balanceSpan = document.querySelector('.balance__num'); //balance Span
 
-
-
-
-
-
-
+	btnBuy.addEventListener('click', function () { //клик на кнопку купить
+		sumNum = Number(document.querySelector('.sum_num').textContent); //последняя стоимость
+		let balance = Number(document.querySelector('.balance__num').textContent); //последний баланс
+		if (balance >= sumNum) { //если на балансе хватает денег
+			balance = balance - sumNum; //уменьшаем баланс на стоимость покупки
+			let balanceText = String(balance); //баланс в текст
+			balanceSpan.innerHTML = `${balanceText}`; //запись нового баланса
+			takenBooks.forEach(titleBook => { //удаляем книги из корзины
+				titleBook.remove();
+			});
+			sumNum = 0; //обнуляем стоимость книг
+			document.querySelector('.sum_num').innerHTML = `${sumNum}`; //записываем 0 в стоимость книг
+			basketFooter.style.display = 'none'; //скрываем футер корзины
+			basketText.style.display = 'block'; //показываем надпись "нет добавленных книг"
+			basketBody.style.justifyContent = 'center';
+			alert('Покупка прошла успешно!');
+		}
+		else {
+			alert('Недостаточно денег для заказа');
+		}
+	});
+}
