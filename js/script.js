@@ -244,6 +244,7 @@ let info, title, titleBook, price, priceBook, close, priceNum;
 let basketFooter = document.querySelector('.basket__footer');
 let sumNum = Number(document.querySelector('.sum_num').textContent); //число суммы
 let takenBooks;
+let minus, plus;
 
 booksBody.addEventListener('click', function (e) {
 	let takenBook = document.createElement('div'); //создаем пустой блок книга
@@ -257,6 +258,12 @@ booksBody.addEventListener('click', function (e) {
 	close = document.createElement('img'); //созадем крестик
 	close.classList.add('close');
 	close.src = 'img/close.svg';
+	minus = document.createElement('img'); //создаем минус
+	minus.classList.add('minus');
+	minus.src = 'img/minus.svg';
+	plus = document.createElement('img'); //создаем плюс
+	plus.classList.add('plus');
+	plus.src = 'img/plus.svg';
 
 	buttons.forEach((button) => { //для каждой кнопки
 		if (button == e.target) { //отслеживаем кликнутую кнопку
@@ -271,9 +278,22 @@ booksBody.addEventListener('click', function (e) {
 			titleBook = title.cloneNode(true); //название книги клон
 			price = button.previousElementSibling; //цена книги
 			priceBook = price.cloneNode(true); //цена книги клон
-			takenBook.prepend(titleBook, pieceBlock, priceBook, close); //в takenbook добавляем заголовок, 1 шт и цену и крестик
-			basketBody.append(takenBook); //вставляем книгу в корзину
 
+
+			takenBook.prepend(titleBook, minus, pieceBlock, plus, close, priceBook); //в takenbook добавляем заголовок, 1 шт, крестик и цену 
+
+			//проверка совпадает ли добавляемая книга с какой-нибудь из корзины (увеличение штук)
+			let takenBooksLive = document.getElementsByClassName('takenBook'); //живая коллекция .takenBook
+			for (takenB of takenBooksLive) {
+				if (takenB.firstElementChild.textContent == takenBook.firstElementChild.textContent && takenB.lastElementChild.firstElementChild.textContent == takenBook.lastElementChild.firstElementChild.textContent) {
+					takenBook.style.display = 'none';
+					let pieces = Number(takenB.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.textContent);
+					pieces++;
+					takenB.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerHTML = `${pieces}`;
+				}
+			}
+
+			basketBody.append(takenBook); //вставляем книгу в корзину
 			takenBooks = document.querySelectorAll('.takenBook'); //все книги в корзине
 
 			//общая стоимость книг
@@ -286,7 +306,7 @@ booksBody.addEventListener('click', function (e) {
 			close.addEventListener('click', function (e) {
 				//уменьшаем итоговую стоимость
 				let cross = e.target; //считываем крестик, на которого нажали
-				let divPrice = cross.previousElementSibling; // блок divPrice, связанный с нажатым кретиком
+				let divPrice = cross.nextElementSibling; // блок divPrice, связанный с нажатым кретиком
 				let priceNumClose = Number(divPrice.firstElementChild.textContent); //цена удаляющей книги 
 				sumNum = sumNum - priceNumClose; //уменьшаем итоговую стоимость
 				let sumNumTextClose = String(sumNum);
@@ -301,6 +321,32 @@ booksBody.addEventListener('click', function (e) {
 					sumNum = 0;
 				}
 			})
+
+			/*//клик на минус
+			minus.addEventListener('click', function (e) {
+				let minusNow = e.target;
+				let takenBookNow = minusNow.closest('.takenBook');
+				let piecesNow = Number(takenBookNow.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.textContent);
+				if (piecesNow > 1) {
+					let takenBooksLive = document.getElementsByClassName('takenBook'); //живая коллекция .takenBook
+					for (takenB of takenBooksLive) {
+						if (takenB.firstElementChild.textContent == takenBookNow.firstElementChild.textContent && takenB.lastElementChild.firstElementChild.textContent == takenBookNow.lastElementChild.firstElementChild.textContent) {
+							if (takenB.style.display = "none") {
+								takenB.remove();
+								break;
+							}
+						}
+					}
+				} else {
+
+				}
+			});
+
+			//клик на плюс
+			plus.addEventListener('click', function (e) {
+				let plusNow = e.target;
+
+			})*/
 		}
 	});
 });
@@ -332,3 +378,12 @@ if (document.querySelector('.btn_buy')) { //если существует кно
 		}
 	});
 }
+
+
+
+
+
+
+
+
+
