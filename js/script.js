@@ -117,7 +117,6 @@ sortBtn.addEventListener('click', function (e) {
 });
 
 
-
 /* Сортировка по категориям */
 
 let design = document.querySelector('.design');
@@ -277,7 +276,9 @@ booksBody.addEventListener('click', function (e) {
 			title = info.firstElementChild; //название книги
 			titleBook = title.cloneNode(true); //название книги клон
 			price = button.previousElementSibling; //цена книги
-			priceBook = price.cloneNode(true); //цена книги клон
+			let priceBook = price.cloneNode(true); //цена книги клон
+			let priceBookContent = priceBook.innerHTML;
+			priceBook.innerHTML = `${priceBookContent}/шт`; //добавляем шт к цене
 
 
 			takenBook.prepend(titleBook, minus, pieceBlock, plus, close, priceBook); //в takenbook добавляем заголовок, 1 шт, крестик и цену 
@@ -307,46 +308,90 @@ booksBody.addEventListener('click', function (e) {
 				//уменьшаем итоговую стоимость
 				let cross = e.target; //считываем крестик, на которого нажали
 				let divPrice = cross.nextElementSibling; // блок divPrice, связанный с нажатым кретиком
-				let priceNumClose = Number(divPrice.firstElementChild.textContent); //цена удаляющей книги 
-				sumNum = sumNum - priceNumClose; //уменьшаем итоговую стоимость
+				let priceNumClose = Number(divPrice.firstElementChild.textContent); //цена удаляющей книги
+				let count = 0;
+				let takenBookNow = cross.closest('.takenBook');
+				//если у книги есть клоны, то их все удаляем
+				takenBooksLive = document.getElementsByClassName('takenBook'); //живая коллекция
+				let takenBooksLiveMas = Array.prototype.slice.call(takenBooksLive); //массив span-ов (из коллекции)
+				takenBooksLiveMas.forEach((takenB) => {
+					if (takenB.firstElementChild.textContent == takenBookNow.firstElementChild.textContent && takenB.lastElementChild.firstElementChild.textContent == takenBookNow.lastElementChild.firstElementChild.textContent) {
+						//sumNum = sumNum - priceNumClose;
+						count++;
+						takenB.remove();
+
+					}
+				});
+
+				sumNum = sumNum - priceNumClose * count; //уменьшаем итоговую стоимость
 				let sumNumTextClose = String(sumNum);
 				document.querySelector('.sum_num').innerHTML = `${sumNumTextClose}`; //выводим итоговую стоимость после вычита
 
 				//удаляем книгу
 				takenBook.remove();
+
+				//вид пустой корзины
 				if (!document.querySelector('.takenBook')) {
 					basketText.style.display = 'block'; //показываем надпись "Нет книг"
 					basketBody.style.justifyContent = 'center';
 					basketFooter.style.display = 'none';
 					sumNum = 0;
 				}
-			})
+			});
 
-			/*//клик на минус
+			//клик на минус
 			minus.addEventListener('click', function (e) {
 				let minusNow = e.target;
+				let count = 0;
 				let takenBookNow = minusNow.closest('.takenBook');
 				let piecesNow = Number(takenBookNow.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.textContent);
 				if (piecesNow > 1) {
-					let takenBooksLive = document.getElementsByClassName('takenBook'); //живая коллекция .takenBook
-					for (takenB of takenBooksLive) {
+					let booksNone = [];
+					takenBooksLive = document.getElementsByClassName('takenBook'); //живая коллекция
+					let takenBooksLiveMas = Array.prototype.slice.call(takenBooksLive); //массив span-ов (из коллекции)
+
+					takenBooksLiveMas.forEach((takenB) => {
 						if (takenB.firstElementChild.textContent == takenBookNow.firstElementChild.textContent && takenB.lastElementChild.firstElementChild.textContent == takenBookNow.lastElementChild.firstElementChild.textContent) {
-							if (takenB.style.display = "none") {
+							if (takenB.style.display == "none") {
+								booksNone.push(takenB);
 								takenB.remove();
-								break;
+								count++;
 							}
 						}
-					}
-				} else {
+					});
+					if (count > 0) {
+						booksNone.pop();
+						console.log(booksNone);
+						booksNone.forEach((remainingBook) => {
+							basketBody.append(remainingBook);
+						});
+						let pieces = Number(takenBookNow.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.textContent);
+						pieces--;
+						takenBookNow.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerHTML = `${pieces}`;
 
+						let priceNumMinus = Number(takenBookNow.lastElementChild.firstElementChild.textContent); //цена удаляющей книги 
+						sumNum = sumNum - priceNumMinus; //уменьшаем итоговую стоимость					
+						document.querySelector('.sum_num').innerHTML = `${sumNum}`; //выводим итоговую стоимость после вычита
+					}
 				}
 			});
 
 			//клик на плюс
 			plus.addEventListener('click', function (e) {
 				let plusNow = e.target;
+				let takenBookNow = plusNow.closest('.takenBook');
+				let newBook = takenBookNow.cloneNode(true);
+				newBook.style.display = 'none';
+				basketBody.append(newBook); //вставляем новую книгу
 
-			})*/
+				let pieces = Number(takenBookNow.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.textContent);
+				pieces++;
+				takenBookNow.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.innerHTML = `${pieces}`;
+
+				let priceNumPlus = Number(takenBookNow.lastElementChild.firstElementChild.textContent); //цена книги 
+				sumNum = sumNum + priceNumPlus; //увеличиваем итоговую стоимость	
+				document.querySelector('.sum_num').innerHTML = `${sumNum}`; //выводим итоговую стоимость после прибавления
+			})
 		}
 	});
 });
