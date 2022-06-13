@@ -277,7 +277,7 @@ h2{
 margin-bottom: 3px;
 }
 .piece{
-	color: #00000080;
+	color: #000;;
 }
 .basket__head img {
 	width: 43px;
@@ -287,6 +287,17 @@ margin-bottom: 3px;
 	top: calc(50% - 4.5px);;
 	right: 24px;
 	padding: 5px;
+}
+.pieces_block{
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.plus{
+	width: 10px;
+}
+.minus{
+	width: 10px;
 }
 
 
